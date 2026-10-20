@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Zero network by construction: no fetch/XHR/WebSocket (connect-src 'none'), only this page's own files. -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'none'; form-action 'none'; base-uri 'none'">
+  <!-- Zero data egress by construction: no fetch/XHR/WebSocket (connect-src 'none'). Only outgoing request: the anonymous GoatCounter pixel (img-src), event names only. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob: https://lou-sauvetage.goatcounter.com; connect-src 'none'; form-action 'none'; base-uri 'none'">
   <meta name="referrer" content="no-referrer">
   <title>Audit gratuit — scan sécurité 100 % navigateur · Sauvetage</title>
   <meta name="description" content="Scannez votre app Lovable, Bolt, v0 ou Replit dans votre navigateur : secrets exposés, RLS Supabase, webhooks Stripe… Votre code ne quitte jamais votre machine.">
@@ -19,7 +19,7 @@
         <span class="brand__mark" aria-hidden="true">✓</span>
         <span>Sauvetage<span class="brand__dot">.</span></span>
       </a>
-      <a class="btn btn--ghost btn--sm" href="../index.html#offres">Voir les offres</a>
+      <a class="btn btn--ghost btn--sm" href="../index.html#offres" data-track="scan-clic-offres-header">Voir les offres</a>
     </div>
   </header>
 
@@ -34,7 +34,7 @@
           <span class="trust__icon" aria-hidden="true">🔒</span>
           <div>
             <strong>Votre code ne quitte jamais votre navigateur — aucun envoi, aucun stockage.</strong>
-            <p>L'analyse tourne dans cet onglet. La page interdit toute requête réseau (politique CSP <code>connect-src 'none'</code>)&nbsp;: vous pouvez couper Internet avant de lancer le scan.</p>
+            <p>L'analyse tourne dans cet onglet. La page interdit tout envoi de données (politique CSP <code>connect-src 'none'</code>)&nbsp;: vous pouvez couper Internet avant de lancer le scan. Seul un compteur de visites anonyme, sans cookie (GoatCounter), note l'ouverture de la page et le lancement du scan&nbsp;— jamais vos fichiers ni vos résultats.</p>
           </div>
         </div>
 
@@ -67,8 +67,8 @@
             <p>Je les corrige au forfait, avec la même vérification automatique avant/après.</p>
           </div>
           <div class="cta__actions">
-            <a class="btn btn--primary btn--lg" href="../index.html#offres">Corriger ces failles <span aria-hidden="true">→</span></a>
-            <a class="btn btn--ghost btn--lg" href="mailto:lou.dev.contact@gmail.com?subject=Audit%20gratuit%20-%20correction">Me contacter</a>
+            <a class="btn btn--primary btn--lg" href="../index.html#offres" data-track="scan-clic-corriger">Corriger ces failles <span aria-hidden="true">→</span></a>
+            <a class="btn btn--ghost btn--lg" data-track="scan-clic-contact" href="mailto:lou.dev.contact@gmail.com?subject=Audit%20gratuit%20-%20correction">Me contacter</a>
           </div>
         </div>
 

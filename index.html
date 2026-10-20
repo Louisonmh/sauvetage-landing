@@ -23,7 +23,7 @@
         <a href="#preuve">Preuve</a>
         <a href="#methode">Méthode</a>
       </nav>
-      <a class="btn btn--primary btn--sm" href="scan/">Audit gratuit</a>
+      <a data-goatcounter-click="audit-header" class="btn btn--primary btn--sm" href="scan/">Audit gratuit</a>
     </div>
   </header>
 
@@ -35,8 +35,8 @@
         <h1 id="hero-title">Votre app est bloquée sur <span class="hl">les 20&nbsp;% qui comptent</span>&nbsp;? Je la sécurise et la mets en production.</h1>
         <p class="lead">L'IA vous a livré 80 % d'un SaaS. Le reste — clés API exposées, tables Supabase ouvertes, paiements Stripe fragiles, déploiement qui casse — c'est mon métier. Diagnostic chiffré, prix fixe, livraison vérifiée.</p>
         <div class="cta-row">
-          <a class="btn btn--primary btn--lg" href="scan/">Audit gratuit <span aria-hidden="true">→</span></a>
-          <a class="btn btn--ghost btn--lg" href="#offres">Voir les offres</a>
+          <a data-goatcounter-click="audit-hero" class="btn btn--primary btn--lg" href="scan/">Audit gratuit <span aria-hidden="true">→</span></a>
+          <a data-goatcounter-click="voir-offres-hero" class="btn btn--ghost btn--lg" href="#offres">Voir les offres</a>
         </div>
         <ul class="hero__facts" aria-label="En bref">
           <li><strong>Forfait</strong> jamais au temps passé</li>
@@ -101,7 +101,7 @@
               <li>Explication courte de la cause</li>
             </ul>
             <p class="offer__note">1 bug bloquant ciblé. Hors refonte et nouvelles fonctionnalités.</p>
-            <a class="btn btn--ghost btn--block" href="#contact">Débloquer mon app</a>
+            <a data-goatcounter-click="offre-flash" class="btn btn--ghost btn--block" href="#contact">Débloquer mon app</a>
           </article>
 
           <article class="offer offer--featured" aria-labelledby="o2">
@@ -117,7 +117,7 @@
               <li>Stripe fiable (webhooks vérifiés), domaine, déploiement</li>
             </ul>
             <p class="offer__note">Livrable : app en production, sécurisée, documentée.</p>
-            <a class="btn btn--primary btn--block" href="#contact">Sécuriser mon SaaS</a>
+            <a data-goatcounter-click="offre-prod" class="btn btn--primary btn--block" href="#contact">Sécuriser mon SaaS</a>
           </article>
 
           <article class="offer" aria-labelledby="o3">
@@ -132,7 +132,7 @@
               <li>Audit de cadrage 150–300&nbsp;€, déduit si mission</li>
             </ul>
             <p class="offer__note">Devis après audit : pas de forfait aveugle sur une base dégradée.</p>
-            <a class="btn btn--ghost btn--block" href="#contact">Faire reprendre mon projet</a>
+            <a data-goatcounter-click="offre-reprise" class="btn btn--ghost btn--block" href="#contact">Faire reprendre mon projet</a>
           </article>
         </div>
         <p class="footnote">En option après mission : maintenance &amp; hébergement, 150–300&nbsp;€/mois.</p>
@@ -176,7 +176,7 @@
         </ul>
 
         <div class="proof__foot">
-          <a class="btn btn--ghost" href="./audit-example.html">Voir le rapport d'audit <span aria-hidden="true">↗</span></a>
+          <a data-goatcounter-click="rapport-demo" class="btn btn--ghost" href="./audit-example.html">Voir le rapport d'audit <span aria-hidden="true">↗</span></a>
           <p class="disclaimer">Cas de démonstration&nbsp;: application fictive avec failles plantées volontairement, clés factices. Les chiffres sont les sorties réelles de l'outil d'audit sur ce dépôt.</p>
         </div>
       </div>
@@ -244,9 +244,9 @@
         <h2 id="final-title">Combien de failles dans votre app&nbsp;?</h2>
         <p class="lead">Audit gratuit, rapport trié par gravité, sans engagement.</p>
         <div class="cta-row cta-row--center">
-          <a class="btn btn--dark btn--lg" href="scan/">Audit gratuit <span aria-hidden="true">→</span></a>
+          <a data-goatcounter-click="audit-bas" class="btn btn--dark btn--lg" href="scan/">Audit gratuit <span aria-hidden="true">→</span></a>
         </div>
-        <p class="contact">Ou écrivez-moi&nbsp;: <a href="mailto:lou.dev.contact@gmail.com?subject=Sauvetage%20app">lou.dev.contact@gmail.com</a></p>
+        <p class="contact">Ou écrivez-moi&nbsp;: <a data-goatcounter-click="contact-email" href="mailto:lou.dev.contact@gmail.com?subject=Sauvetage%20app">lou.dev.contact@gmail.com</a></p>
       </div>
     </section>
   </main>
@@ -255,7 +255,10 @@
     <div class="wrap footer__in">
       <p>Sauvetage &amp; mise en production d'apps vibe-codées.</p>
       <p>Analyse statique sur dépôt fourni par le client uniquement.</p>
+      <p>Statistiques de visite anonymes, sans cookie (GoatCounter).</p>
     </div>
   </footer>
+  <!-- Compteur de visites anonyme, sans cookie (GoatCounter) : pas de bandeau RGPD requis. ?ref= des liens partagés = source. -->
+  <script data-goatcounter="https://lou-sauvetage.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>

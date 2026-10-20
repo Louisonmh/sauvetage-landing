@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Zero network by construction: no fetch/XHR/WebSocket (connect-src 'none'), only this page's own files. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'none'; form-action 'none'; base-uri 'none'">
+  <meta name="referrer" content="no-referrer">
+  <title>Audit gratuit — scan sécurité 100 % navigateur · Sauvetage</title>
+  <meta name="description" content="Scannez votre app Lovable, Bolt, v0 ou Replit dans votre navigateur : secrets exposés, RLS Supabase, webhooks Stripe… Votre code ne quitte jamais votre machine.">
+  <meta name="theme-color" content="#0b0b0f">
+  <link rel="stylesheet" href="scan.css">
+  <script type="module" src="scan.js"></script>
+</head>
+<body data-state="idle">
+  <header class="topbar">
+    <div class="wrap topbar__in">
+      <a class="brand" href="../index.html" aria-label="Sauvetage, retour à l'accueil">
+        <span class="brand__mark" aria-hidden="true">✓</span>
+        <span>Sauvetage<span class="brand__dot">.</span></span>
+      </a>
+      <a class="btn btn--ghost btn--sm" href="../index.html#offres">Voir les offres</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="intro">
+      <div class="wrap">
+        <p class="kicker">Audit gratuit · self-service</p>
+        <h1>Combien de failles dans <span class="hl">votre app</span>&nbsp;?</h1>
+        <p class="lead">10 contrôles automatiques sur votre dépôt&nbsp;: clés API en dur, tables Supabase sans RLS, <code>service_role</code> côté client, webhooks Stripe non signés, <code>.env</code> exposé, CORS ouvert, Edge Functions sans auth, XSS, entrées non validées.</p>
+
+        <div class="trust" id="trust" role="note">
+          <span class="trust__icon" aria-hidden="true">🔒</span>
+          <div>
+            <strong>Votre code ne quitte jamais votre navigateur — aucun envoi, aucun stockage.</strong>
+            <p>L'analyse tourne dans cet onglet. La page interdit toute requête réseau (politique CSP <code>connect-src 'none'</code>)&nbsp;: vous pouvez couper Internet avant de lancer le scan.</p>
+          </div>
+        </div>
+
+        <div class="drop" id="drop">
+          <p class="drop__title">Glissez ici le dossier de votre dépôt ou son <strong>.zip</strong></p>
+          <p class="drop__hint">ou</p>
+          <div class="drop__actions">
+            <label class="btn btn--primary btn--lg">Choisir un dossier<input id="pick-dir" type="file" webkitdirectory multiple hidden></label>
+            <label class="btn btn--ghost btn--lg">Choisir un .zip<input id="pick-zip" type="file" accept=".zip,application/zip" hidden></label>
+          </div>
+          <p class="drop__limits">Ignorés comme par le CLI&nbsp;: <code>node_modules</code>, <code>dist</code>, <code>.git</code>, builds, binaires, lockfiles. Limites&nbsp;: 50&nbsp;Mo de sources, 10&nbsp;000 fichiers, archive 100&nbsp;Mo.</p>
+        </div>
+
+        <div class="progress" id="progress" hidden aria-live="polite">
+          <progress id="progress-bar" max="1"></progress>
+          <p id="progress-status">Lecture des fichiers…</p>
+        </div>
+
+        <p class="error" id="error" role="alert" hidden></p>
+      </div>
+    </section>
+
+    <section class="report" id="report" hidden aria-labelledby="report-title">
+      <div class="wrap">
+        <div id="report-body"></div>
+
+        <div class="cta">
+          <div>
+            <h3>Ces failles bloquent votre mise en prod&nbsp;?</h3>
+            <p>Je les corrige au forfait, avec la même vérification automatique avant/après.</p>
+          </div>
+          <div class="cta__actions">
+            <a class="btn btn--primary btn--lg" href="../index.html#offres">Corriger ces failles <span aria-hidden="true">→</span></a>
+            <a class="btn btn--ghost btn--lg" href="mailto:lou.dev.contact@gmail.com?subject=Audit%20gratuit%20-%20correction">Me contacter</a>
+          </div>
+        </div>
+
+        <div class="report__actions">
+          <button class="btn btn--ghost" id="download" type="button">Télécharger le rapport HTML</button>
+          <button class="btn btn--ghost" id="again" type="button">Nouveau scan</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">Analyse statique locale par audit-cli : aucun code exécuté, aucun appel réseau, secrets masqués dans le rapport. Résultat indicatif : un audit manuel reste nécessaire avant la prod.</div>
+  </footer>
+</body>
+</html>

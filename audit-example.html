@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Audit sécurité · vibe-app</title>
+<style>
+:root{--ink:#0f172a;--muted:#475569;--line:#e2e8f0;--bg:#f1f5f9;
+--critical:#b42318;--critical-bg:#fee4e2;--high:#b54708;--high-bg:#fef0c7;
+--medium:#854d0e;--medium-bg:#fef9c3;--low:#1d4ed8;--low-bg:#dbeafe}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+code,pre{font-family:ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+header{background:var(--ink);color:#fff;padding:40px 0 88px;border-bottom:6px solid var(--critical)}
+header .kicker{margin:0;text-transform:uppercase;letter-spacing:.14em;font-size:13px;font-weight:700;color:#cbd5e1}
+header h1{margin:6px 0 10px;font-size:clamp(28px,4vw,42px);line-height:1.1;font-weight:800;word-break:break-word}
+header .meta{margin:0;color:#e2e8f0;font-size:15px}
+header .meta span{display:inline-block;margin-right:18px}
+main{padding:0 0 56px}
+h2{font-size:22px;margin:36px 0 14px;font-weight:800}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin-top:-60px}
+.tile{background:#fff;border-radius:14px;padding:18px 20px;border-top:8px solid var(--c,var(--ink));box-shadow:0 1px 2px rgba(15,23,42,.08),0 8px 24px rgba(15,23,42,.06)}
+.tile .n{display:block;font-size:44px;font-weight:800;line-height:1;color:var(--c,var(--ink))}
+.tile .l{display:block;margin-top:6px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:13px}
+.critical{--c:var(--critical);--cb:var(--critical-bg)}.high{--c:var(--high);--cb:var(--high-bg)}
+.medium{--c:var(--medium);--cb:var(--medium-bg)}.low{--c:var(--low);--cb:var(--low-bg)}
+.offers{background:#fff;border-radius:14px;padding:18px 22px;border:1px solid var(--line)}
+.offers ul{margin:0;padding-left:20px}.offers li{font-weight:600}
+.card{background:#fff;border-radius:14px;border:1px solid var(--line);border-left:8px solid var(--c);padding:20px 22px;margin:0 0 16px;break-inside:avoid}
+.card h3{margin:10px 0 6px;font-size:19px;line-height:1.3}
+.badge{display:inline-block;padding:3px 10px;border-radius:999px;background:var(--cb);color:var(--c);border:1.5px solid var(--c);font-weight:800;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase}
+.num{color:var(--muted);font-weight:700;margin-right:8px}
+.loc{margin:0 0 12px;color:var(--muted);font-size:14.5px}
+.loc code{color:var(--ink);background:var(--bg);padding:2px 6px;border-radius:6px}
+pre{margin:0 0 14px;background:var(--ink);color:#e2e8f0;padding:12px 14px;border-radius:10px;font-size:13.5px;white-space:pre-wrap;word-break:break-all}
+dl{margin:0;display:grid;grid-template-columns:max-content 1fr;gap:6px 14px}
+dt{font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding-top:2px}
+dd{margin:0}dd code{background:var(--bg);padding:1px 5px;border-radius:5px;font-size:.92em}
+.empty{background:#fff;border-radius:14px;padding:28px;border:1px solid var(--line);font-size:18px;font-weight:600}
+footer{color:var(--muted);font-size:13.5px;padding:0 0 40px}
+@media (max-width:560px){dl{grid-template-columns:1fr}}
+@media print{body{background:#fff}header{print-color-adjust:exact;-webkit-print-color-adjust:exact}.card,.tile{box-shadow:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<p class="kicker">Rapport d'audit sécurité</p>
+<h1>vibe-app</h1>
+<p class="meta"><span>Date : 19 octobre 2026 à 21:53 UTC</span><span>15 fichiers analysés</span><span>97 ms</span></p>
+</div></header>
+<main><div class="wrap">
+<section class="tiles" aria-label="Findings par sévérité"><div class="tile critical"><span class="n">7</span><span class="l">Critique · critical</span></div><div class="tile high"><span class="n">3</span><span class="l">Élevée · high</span></div><div class="tile medium"><span class="n">0</span><span class="l">Moyenne · medium</span></div><div class="tile low"><span class="n">1</span><span class="l">Faible · low</span></div><div class="tile"><span class="n">11</span><span class="l">Total</span></div></section>
+<h2>Offre recommandée</h2>
+<div class="offers"><ul><li>Pack Prêt pour la Prod (800–1500€)</li><li>Déblocage Flash (150–300€)</li></ul></div>
+<h2>Findings (11)</h2>
+<article class="card critical">
+<span class="badge">Critique · critical</span>
+<h3><span class="num">1.</span>Secret exposé au bundle via VITE_SUPABASE_SERVICE_ROLE_KEY</h3>
+<p class="loc"><code>.env.example:3</code> · détecteur <code>public-env-secret</code></p>
+<pre><code>VITE_SUPABASE_SERVICE_ROLE_KEY=your-se…[REDACTED]</code></pre>
+<dl><dt>Remédiation</dt><dd>Les variables <code>NEXT_PUBLIC_*</code> / <code>VITE_*</code> / <code>PUBLIC_*</code> / <code>REACT_APP_*</code> sont copiées en clair dans le JavaScript livré au navigateur (nom de variable réservé aux secrets). Révoquer la clé, la renommer sans préfixe public, et faire l&#39;appel depuis une route serveur / Edge Function qui la lit en variable d&#39;environnement serveur.</dd><dt>Offre</dt><dd>Pack Prêt pour la Prod (800–1500€)</dd></dl>
+</article>
+<article class="card critical">
+<span class="badge">Critique · critical</span>
+<h3><span class="num">2.</span>Secret exposé au bundle via VITE_RESEND_SECRET_KEY</h3>
+<p class="loc"><code>.env.example:4</code> · détecteur <code>public-env-secret</code></p>
+<pre><code>VITE_RESEND_SECRET_KEY=your-…[REDACTED]</code></pre>
+<dl><dt>Remédiation</dt><dd>Les variables <code>NEXT_PUBLIC_*</code> / <code>VITE_*</code> / <code>PUBLIC_*</code> / <code>REACT_APP_*</code> sont copiées en clair dans le JavaScript livré au navigateur (nom de variable réservé aux secrets). Révoquer la clé, la renommer sans préfixe public, et faire l&#39;appel depuis une route serveur / Edge Function qui la lit en variable d&#39;environnement serveur.</dd><dt>Offre</dt><dd>Pack Prêt pour la Prod (800–1500€)</dd></dl>
+</article>
+<article class="card critical">
+<span class="badge">Critique · critical</span>
+<h3><span class="num">3.</span>Clé Supabase service_role utilisée côté client</h3>
+<p class="loc"><code>src/integrations/supabase/client.ts:5</code> · détecteur <code>service-role-client</code></p>
+<pre><code>const SUPABASE_ADMIN_KEY = import.meta.env.VITE_SUPABASE_SERVICE_ROLE_KEY;</code></pre>
+<dl><dt>Remédiation</dt><dd>La clé service_role contourne toute la RLS : elle ne doit jamais atteindre le navigateur. Côté front, utiliser uniquement la clé anon/publishable ; déplacer les opérations admin dans une Edge Function qui lit <code>SUPABASE_SERVICE_ROLE_KEY</code> depuis ses secrets, puis régénérer la clé exposée.</dd><dt>Offre</dt><dd>Pack Prêt pour la Prod (800–1500€)</dd></dl>
+</article>
+<article class="card critical">
+<span class="badge">Critique · critical</span>
+<h3><span class="num">4.</span>Secret exposé au bundle via VITE_RESEND_SECRET_KEY</h3>
+<p class="loc"><code>src/lib/email.ts:1</code> · détecteur <code>public-env-secret</code></p>
+<pre><code>const RESEND_KEY = import.meta.env.VITE_RESEND_SECRET_KEY;</code></pre>
+<dl><dt>Remédiation</dt><dd>Les variables <code>NEXT_PUBLIC_*</code> / <code>VITE_*</code> / <code>PUBLIC_*</code> / <code>REACT_APP_*</code> sont copiées en clair dans le JavaScript livré au navigateur (nom de variable réservé aux secrets). Révoquer la clé, la renommer sans préfixe public, et faire l&#39;appel depuis une route serveur / Edge Function qui la lit en variable d&#39;environnement serveur.</dd><dt>Offre</dt><dd>Pack Prêt pour la Prod (800–1500€)</dd></dl>
+</article>
+<article class="card critical">
+<span class="badge">Critique · critical</span>
+<h3><span class="num">5.</span>Clé secrète Stripe exposée dans le bundle front</h3>
+<p class="loc"><code>src/lib/stripe.ts:1</code> · détecteur <code>secrets</code></p>
+<pre><code>const STRIPE_SECRET_KEY = &#39;sk_li…[REDACTED]&#39;;</code></pre>
+<dl><dt>Remédiation</dt><dd>Révoquer et régénérer la clé immédiatement (elle est publique). Déplacer l&#39;appel dans une Edge Function / route serveur et lire la clé depuis une variable d&#39;environnement serveur (jamais préfixée VITE_/NEXT_PUBLIC_).</dd><dt>Offre</dt><dd>Pack Prêt pour la Prod (800–1500€)</dd></dl>
+</article>
+<article class="card critical">
+<span class="badge">Critique · critical</span>
+<h3><span class="num">6.</span>Table sans RLS : public.invoices</h3>
+<p class="loc"><code>supabase/migrations/20250110120000_init.sql:15</code> · détecteur <code>supabase-rls</code></p>
+<pre><code>create table public.invoices (</code></pre>
+<dl><dt>Remédiation</dt><dd>Ajouter une migration <code>ALTER TABLE public.invoices ENABLE ROW LEVEL SECURITY;</code> puis des policies explicites (ex. <code>USING (auth.uid() = user_id)</code>). Sans RLS, la clé anon publique donne lecture/écriture totale sur la table.</dd><dt>Offre</dt><dd>Pack Prêt pour la Prod (800–1500€)</dd></dl>
+</article>
+<article class="card critical">
+<span class="badge">Critique · critical</span>
+<h3><span class="num">7.</span>Table sans RLS : public.subscriptions</h3>
+<p class="loc"><code>supabase/migrations/20250110120000_init.sql:25</code> · détecteur <code>supabase-rls</code></p>
+<pre><code>create table public.subscriptions (</code></pre>
+<dl><dt>Remédiation</dt><dd>Ajouter une migration <code>ALTER TABLE public.subscriptions ENABLE ROW LEVEL SECURITY;</code> puis des policies explicites (ex. <code>USING (auth.uid() = user_id)</code>). Sans RLS, la clé anon publique donne lecture/écriture totale sur la table.</dd><dt>Offre</dt><dd>Pack Prêt pour la Prod (800–1500€)</dd></dl>
+</article>
+<article class="card high">
+<span class="badge">Élevée · high</span>
+<h3><span class="num">8.</span>Edge Function « stripe-webhook » publique sans authentification (verify_jwt = false)</h3>
+<p class="loc"><code>supabase/config.toml:4</code> · détecteur <code>edge-fn-no-auth</code></p>
+<pre><code>[functions.stripe-webhook] verify_jwt = false</code></pre>
+<dl><dt>Remédiation</dt><dd>Vérifier l&#39;appelant en tête de handler : <code>supabase.auth.getUser(token)</code> avec le header <code>Authorization</code> (puis filtrer sur <code>user.id</code>), ou une signature / un secret partagé pour un webhook. Réserver <code>verify_jwt = false</code> aux webhooks signés et n&#39;utiliser le client service_role qu&#39;après ce contrôle.</dd><dt>Offre</dt><dd>Pack Prêt pour la Prod (800–1500€)</dd></dl>
+</article>
+<article class="card high">
+<span class="badge">Élevée · high</span>
+<h3><span class="num">9.</span>Webhook Stripe sans vérification de signature</h3>
+<p class="loc"><code>supabase/functions/stripe-webhook/index.ts:8</code> · détecteur <code>stripe-webhook</code></p>
+<pre><code>const event = (await req.json()) as Stripe.Event;</code></pre>
+<dl><dt>Remédiation</dt><dd>Lire le body brut (<code>express.raw()</code> / <code>await req.text()</code>) et appeler <code>stripe.webhooks.constructEvent(rawBody, sig, STRIPE_WEBHOOK_SECRET)</code> (ou <code>constructEventAsync</code> en Edge/Deno) avant tout traitement ; rejeter en 400 si la signature est invalide. Sinon n&#39;importe qui peut forger un <code>checkout.session.completed</code>.</dd><dt>Offre</dt><dd>Déblocage Flash (150–300€)</dd></dl>
+</article>
+<article class="card high">
+<span class="badge">Élevée · high</span>
+<h3><span class="num">10.</span>Policy RLS permissive (true) sur public.profiles</h3>
+<p class="loc"><code>supabase/migrations/20250110120000_init.sql:12</code> · détecteur <code>supabase-rls</code></p>
+<pre><code>create policy &#34;Profiles are viewable by everyone&#34; on public.profiles</code></pre>
+<dl><dt>Remédiation</dt><dd>Remplacer <code>USING (true)</code> / <code>WITH CHECK (true)</code> par une condition liée à l&#39;utilisateur, ex. <code>USING (auth.uid() = user_id)</code>, et restreindre la policy au rôle <code>authenticated</code> et à la commande nécessaire (FOR SELECT/INSERT…).</dd><dt>Offre</dt><dd>Pack Prêt pour la Prod (800–1500€)</dd></dl>
+</article>
+<article class="card low">
+<span class="badge">Faible · low</span>
+<h3><span class="num">11.</span>Body de requête utilisé sans validation de schéma</h3>
+<p class="loc"><code>supabase/functions/create-invoice/index.ts:17</code> · détecteur <code>zod-missing</code></p>
+<pre><code>const body = await req.json();</code></pre>
+<dl><dt>Remédiation</dt><dd>Valider le body avec un schéma avant usage : <code>const input = Schema.safeParse(await req.json())</code> (zod / valibot), renvoyer 400 si <code>!input.success</code>, puis n&#39;utiliser que <code>input.data</code>. Évite les champs inattendus (ex. <code>role</code>, <code>user_id</code>) injectés par un client malveillant.</dd><dt>Offre</dt><dd>Déblocage Flash (150–300€)</dd></dl>
+</article>
+</div></main>
+<footer><div class="wrap">Analyse statique locale : aucun code exécuté, aucun appel réseau. Les secrets détectés sont masqués dans ce rapport.</div></footer>
+</body>
+</html>

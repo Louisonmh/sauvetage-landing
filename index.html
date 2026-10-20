@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sauvetage d'apps vibe-codées — sécurisation et mise en production</title>
+  <meta name="description" content="Votre app Lovable, Bolt, v0 ou Replit est bloquée sur les 20 % finaux ? Clés API exposées, Supabase sans RLS, webhooks Stripe, déploiement : je la sécurise et la mets en production, au forfait.">
+  <meta name="theme-color" content="#0b0b0f">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Aller au contenu</a>
+
+  <header class="topbar">
+    <div class="wrap topbar__in">
+      <a class="brand" href="#top" aria-label="Sauvetage, retour en haut">
+        <span class="brand__mark" aria-hidden="true">✓</span>
+        <span>Sauvetage<span class="brand__dot">.</span></span>
+      </a>
+      <nav class="nav" aria-label="Navigation principale">
+        <a href="#probleme">Problème</a>
+        <a href="#offres">Offres</a>
+        <a href="#preuve">Preuve</a>
+        <a href="#methode">Méthode</a>
+      </nav>
+      <a class="btn btn--primary btn--sm" href="scan/">Audit gratuit</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- 1. HERO -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="wrap">
+        <p class="eyebrow"><span class="pulse" aria-hidden="true"></span>Lovable · Bolt · v0 · Replit · Cursor</p>
+        <h1 id="hero-title">Votre app est bloquée sur <span class="hl">les 20&nbsp;% qui comptent</span>&nbsp;? Je la sécurise et la mets en production.</h1>
+        <p class="lead">L'IA vous a livré 80 % d'un SaaS. Le reste — clés API exposées, tables Supabase ouvertes, paiements Stripe fragiles, déploiement qui casse — c'est mon métier. Diagnostic chiffré, prix fixe, livraison vérifiée.</p>
+        <div class="cta-row">
+          <a class="btn btn--primary btn--lg" href="scan/">Audit gratuit <span aria-hidden="true">→</span></a>
+          <a class="btn btn--ghost btn--lg" href="#offres">Voir les offres</a>
+        </div>
+        <ul class="hero__facts" aria-label="En bref">
+          <li><strong>Forfait</strong> jamais au temps passé</li>
+          <li><strong>10</strong> contrôles de sécurité automatisés</li>
+          <li><strong>1 jour</strong> pour un MVP type</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 2. PROBLÈME -->
+    <section class="section" id="probleme" aria-labelledby="probleme-title">
+      <div class="wrap">
+        <p class="kicker">Le problème</p>
+        <h2 id="probleme-title">Ça marche en démo.<br>Ça ne tiendra pas face à de vrais clients.</h2>
+        <ul class="pains">
+          <li class="pain">
+            <span class="pain__icon" aria-hidden="true">🔑</span>
+            <h3>Clés API exposées côté front</h3>
+            <p>Clé Stripe, Resend ou <code>service_role</code> livrée dans le JavaScript du navigateur : n'importe quel visiteur peut l'utiliser.</p>
+          </li>
+          <li class="pain">
+            <span class="pain__icon" aria-hidden="true">🗄️</span>
+            <h3>Tables Supabase sans RLS</h3>
+            <p>Sans Row Level Security, la clé anon publique suffit pour lire les données de tous vos utilisateurs.</p>
+          </li>
+          <li class="pain">
+            <span class="pain__icon" aria-hidden="true">💳</span>
+            <h3>Webhooks Stripe cassés</h3>
+            <p>Signature non vérifiée, événements perdus ou rejoués : un paiement forgé active le plan Pro gratuitement.</p>
+          </li>
+          <li class="pain">
+            <span class="pain__icon" aria-hidden="true">🔁</span>
+            <h3>Boucles d'erreurs sans fin</h3>
+            <p>50 prompts plus tard, le même bug revient. Chaque correction de l'IA en casse une autre.</p>
+          </li>
+          <li class="pain">
+            <span class="pain__icon" aria-hidden="true">🚫</span>
+            <h3>Déploiement en échec</h3>
+            <p>Build qui plante, variables d'environnement mal placées, domaine jamais branché. L'app reste en local.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. OFFRES -->
+    <section class="section section--alt" id="offres" aria-labelledby="offres-title">
+      <div class="wrap">
+        <p class="kicker">Les offres</p>
+        <h2 id="offres-title">Trois forfaits. Un périmètre clair.</h2>
+        <p class="sub">Au forfait, <strong>jamais au temps passé</strong>. Vous connaissez le prix avant que je touche au code.</p>
+
+        <div class="offers">
+          <article class="offer" aria-labelledby="o1">
+            <h3 id="o1" class="offer__name">Déblocage Flash</h3>
+            <p class="offer__price">150–300&nbsp;€</p>
+            <p class="offer__time"><span aria-hidden="true">⏱</span> 1–2 h · sous 24 h</p>
+            <p class="offer__pitch">Un bug bloquant précis : Auth cassée, webhook Stripe muet, build qui échoue.</p>
+            <ul class="checks">
+              <li>Diagnostic du bug bloquant</li>
+              <li>Correction ciblée</li>
+              <li>Vérification que ça marche</li>
+              <li>Explication courte de la cause</li>
+            </ul>
+            <p class="offer__note">1 bug bloquant ciblé. Hors refonte et nouvelles fonctionnalités.</p>
+            <a class="btn btn--ghost btn--block" href="#contact">Débloquer mon app</a>
+          </article>
+
+          <article class="offer offer--featured" aria-labelledby="o2">
+            <p class="badge">Populaire</p>
+            <h3 id="o2" class="offer__name">Pack Prêt pour la Prod</h3>
+            <p class="offer__price">800–1&nbsp;500&nbsp;€</p>
+            <p class="offer__time"><span aria-hidden="true">⏱</span> 1–2 jours</p>
+            <p class="offer__pitch">Votre MVP passe de « marche en local » à « prêt pour de vrais paiements ».</p>
+            <ul class="checks">
+              <li>Rapport d'audit complet</li>
+              <li>Clés secrètes migrées vers des Edge Functions</li>
+              <li>Règles RLS Supabase strictes</li>
+              <li>Stripe fiable (webhooks vérifiés), domaine, déploiement</li>
+            </ul>
+            <p class="offer__note">Livrable : app en production, sécurisée, documentée.</p>
+            <a class="btn btn--primary btn--block" href="#contact">Sécuriser mon SaaS</a>
+          </article>
+
+          <article class="offer" aria-labelledby="o3">
+            <h3 id="o3" class="offer__name">Reprise &amp; Finition des 20&nbsp;%</h3>
+            <p class="offer__price">2&nbsp;000&nbsp;€+</p>
+            <p class="offer__time"><span aria-hidden="true">⏱</span> 3–5 jours</p>
+            <p class="offer__pitch">L'architecture est devenue spaghetti et les fonctionnalités complexes n'avancent plus.</p>
+            <ul class="checks">
+              <li>Reprise du dépôt Git</li>
+              <li>Nettoyage de l'architecture</li>
+              <li>Développement des 20&nbsp;% difficiles (logique métier, états, intégrations)</li>
+              <li>Audit de cadrage 150–300&nbsp;€, déduit si mission</li>
+            </ul>
+            <p class="offer__note">Devis après audit : pas de forfait aveugle sur une base dégradée.</p>
+            <a class="btn btn--ghost btn--block" href="#contact">Faire reprendre mon projet</a>
+          </article>
+        </div>
+        <p class="footnote">En option après mission : maintenance &amp; hébergement, 150–300&nbsp;€/mois.</p>
+      </div>
+    </section>
+
+    <!-- 4. PREUVE -->
+    <section class="section" id="preuve" aria-labelledby="preuve-title">
+      <div class="wrap">
+        <p class="kicker">La preuve</p>
+        <h2 id="preuve-title">InvoiceFlow&nbsp;: de 7 failles critiques à zéro.</h2>
+        <p class="sub">SaaS de facturation type Lovable/Bolt — React + Vite, Supabase, Stripe, Resend. Audit avant, remédiation, re-scan après.</p>
+
+        <div class="proof">
+          <div class="tile tile--bad">
+            <p class="tile__label">Avant</p>
+            <p class="tile__num">7</p>
+            <p class="tile__cap">failles critiques</p>
+            <p class="tile__more">+ 3 high · 1 low</p>
+          </div>
+          <div class="proof__arrow" aria-hidden="true">→</div>
+          <div class="tile tile--good">
+            <p class="tile__label">Après</p>
+            <p class="tile__num">0</p>
+            <p class="tile__cap">finding</p>
+            <p class="tile__more">tous niveaux confondus</p>
+          </div>
+          <div class="tile tile--time">
+            <p class="tile__label">Délai estimé</p>
+            <p class="tile__num">1<span class="tile__unit">j</span></p>
+            <p class="tile__cap">ouvré</p>
+            <p class="tile__more">audit, correctifs, déploiement</p>
+          </div>
+        </div>
+
+        <ul class="fixes">
+          <li><strong>Clé Stripe secrète</strong> sortie du front → Edge Function + rotation.</li>
+          <li><strong>Client <code>service_role</code></strong> retiré du navigateur.</li>
+          <li><strong>Tables <code>invoices</code> et <code>subscriptions</code></strong> passées sous RLS stricte.</li>
+          <li><strong>Webhook Stripe</strong> signé et idempotent : plus d'activation Pro forgée.</li>
+        </ul>
+
+        <div class="proof__foot">
+          <a class="btn btn--ghost" href="./audit-example.html">Voir le rapport d'audit <span aria-hidden="true">↗</span></a>
+          <p class="disclaimer">Cas de démonstration&nbsp;: application fictive avec failles plantées volontairement, clés factices. Les chiffres sont les sorties réelles de l'outil d'audit sur ce dépôt.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. MÉTHODE -->
+    <section class="section section--alt" id="methode" aria-labelledby="methode-title">
+      <div class="wrap">
+        <p class="kicker">Comment ça marche</p>
+        <h2 id="methode-title">Du dépôt bloqué à la prod, en 4 étapes.</h2>
+        <ol class="steps">
+          <li class="step">
+            <span class="step__n" aria-hidden="true">01</span>
+            <h3>Vous m'ouvrez le repo</h3>
+            <p>Accès en lecture à votre dépôt GitHub/GitLab. Rien d'autre.</p>
+          </li>
+          <li class="step">
+            <span class="step__n" aria-hidden="true">02</span>
+            <h3>Audit en 60&nbsp;s</h3>
+            <p>Scan automatisé&nbsp;: secrets, RLS, webhooks, CORS, Edge Functions, validation des entrées. Rapport trié par gravité.</p>
+          </li>
+          <li class="step">
+            <span class="step__n" aria-hidden="true">03</span>
+            <h3>Devis au forfait</h3>
+            <p>Chaque faille est mappée sur une offre. Prix fixe, périmètre écrit.</p>
+          </li>
+          <li class="step">
+            <span class="step__n" aria-hidden="true">04</span>
+            <h3>Livraison sécurisée</h3>
+            <p>Correctifs en pull request, re-scan à zéro, déploiement et rotation des clés.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 6. GARANTIES -->
+    <section class="section" id="cadre" aria-labelledby="cadre-title">
+      <div class="wrap">
+        <p class="kicker">Le cadre</p>
+        <h2 id="cadre-title">Des règles simples, tenues.</h2>
+        <div class="guarantees">
+          <div class="guarantee">
+            <h3>Forfait fixe</h3>
+            <p>Prix annoncé avant le début. Jamais de facturation au temps passé, jamais de dépassement surprise.</p>
+          </div>
+          <div class="guarantee">
+            <h3>Votre repo, rien d'autre</h3>
+            <p>Analyse statique uniquement sur le dépôt que vous m'ouvrez. Aucun scan de vos systèmes en ligne ni de tiers.</p>
+          </div>
+          <div class="guarantee">
+            <h3>Confidentialité</h3>
+            <p>Code et secrets traités confidentiellement, jamais réutilisés. Les secrets sont masqués dans les rapports.</p>
+          </div>
+          <div class="guarantee">
+            <h3>Preuve à la livraison</h3>
+            <p>Re-scan avant/après joint au livrable. Vous voyez ce qui a été corrigé, ligne par ligne.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. CTA FINAL -->
+    <section class="final" id="contact" aria-labelledby="final-title">
+      <div class="wrap final__in">
+        <h2 id="final-title">Combien de failles dans votre app&nbsp;?</h2>
+        <p class="lead">Audit gratuit, rapport trié par gravité, sans engagement.</p>
+        <div class="cta-row cta-row--center">
+          <a class="btn btn--dark btn--lg" href="scan/">Audit gratuit <span aria-hidden="true">→</span></a>
+        </div>
+        <p class="contact">Ou écrivez-moi&nbsp;: <a href="mailto:lou.dev.contact@gmail.com?subject=Sauvetage%20app">lou.dev.contact@gmail.com</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__in">
+      <p>Sauvetage &amp; mise en production d'apps vibe-codées.</p>
+      <p>Analyse statique sur dépôt fourni par le client uniquement.</p>
+    </div>
+  </footer>
+</body>
+</html>
